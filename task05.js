@@ -7,7 +7,8 @@ function task05()
     const pathToFile = process.argv[2] + "/summary.js";
     const path = require('path');
     const fs = require('fs');
-    let re = new RegExp("[a-z]:([\\/]?([^*|\\/:\"<>]*))*");
+    let re = new RegExp("[a-zA-Z]:([\\/]?([^*|\\/:\"<>]*))*");
+    
     if (re.test(process.argv[2]))
     {
         fs.writeFile(path.basename(pathToFile), "", function(err) {
@@ -32,6 +33,7 @@ function task05()
             
         let files = fs.readdirSync(path.dirname(pathToFile));
         let copyright = JSON.parse(fs.readFileSync('config.json')).copyright;
+        debugger;
         for (let i in files) 
         {
             if (path.extname(files[i]) === ".txt") 
